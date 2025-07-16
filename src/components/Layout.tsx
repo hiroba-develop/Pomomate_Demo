@@ -160,7 +160,7 @@ const Layout = ({ children }: LayoutProps) => {
         {/* メインコンテンツ */}
         <main className="flex-1 overflow-y-auto focus:outline-none">
           <div className="py-6">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex justify-center">
               {children}
             </div>
           </div>

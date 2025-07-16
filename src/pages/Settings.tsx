@@ -15,7 +15,7 @@ const SettingsContent = () => {
   const [notificationSettings, setNotificationSettings] =
     useState<PomodoroNotificationSettings>({
       soundEnabled: true,
-      soundUrl: "/notification.mp3",
+      soundUrl: "/notification_melody.mp3",
       browserNotificationsEnabled: true,
     });
 
@@ -79,25 +79,19 @@ const SettingsContent = () => {
   // 通知音のテスト
   const testNotificationSound = () => {
     try {
-      // ビープ音を鳴らす
-      const context = new (window.AudioContext ||
-        (window as any).webkitAudioContext)();
-      const oscillator = context.createOscillator();
-      const gainNode = context.createGain();
+      // notification_melody.mp3を再生する
+      const audio = new Audio("/notification_melody.mp3");
 
-      oscillator.connect(gainNode);
-      gainNode.connect(context.destination);
+      // 再生開始
+      audio.play().catch((err) => {
+        console.error("通知音の再生に失敗しました:", err);
+      });
 
-      oscillator.type = "sine";
-      oscillator.frequency.value = 800;
-      gainNode.gain.value = 0.5;
-
-      oscillator.start();
-
-      // 0.5秒後に停止
+      // 5秒後に停止
       setTimeout(() => {
-        oscillator.stop();
-      }, 500);
+        audio.pause();
+        audio.currentTime = 0;
+      }, 5000);
     } catch (err) {
       console.error("通知音の再生に失敗しました:", err);
     }

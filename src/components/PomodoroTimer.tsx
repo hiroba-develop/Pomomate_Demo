@@ -98,24 +98,26 @@ const PomodoroTimer: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 max-w-md mx-auto">
-      <div className="text-center mb-6">
-        <h2 className={`text-2xl font-bold ${timerInfo.textColor}`}>
+    <div className="bg-white rounded-lg shadow-lg p-4 md:p-6 w-full">
+      <div className="text-center mb-4 md:mb-6">
+        <h2 className={`text-xl md:text-2xl font-bold ${timerInfo.textColor}`}>
           {timerInfo.title}
         </h2>
         {currentTask && (
-          <p className="text-gray-600 mt-1">
+          <p className="text-gray-600 mt-1 text-sm md:text-base">
             現在のタスク: {currentTask.title}
           </p>
         )}
       </div>
 
       {/* タイマー表示 */}
-      <div className="flex justify-center mb-6">
+      <div className="flex justify-center mb-4 md:mb-6">
         <div
-          className={`relative w-48 h-48 rounded-full flex items-center justify-center border-8 ${timerInfo.borderColor}`}
+          className={`relative w-36 h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 rounded-full flex items-center justify-center border-6 md:border-8 ${timerInfo.borderColor}`}
         >
-          <div className="text-4xl font-bold">{formatTime(timeRemaining)}</div>
+          <div className="text-2xl md:text-3xl lg:text-4xl font-bold">
+            {formatTime(timeRemaining)}
+          </div>
           {/* 進捗バー */}
           <div
             className="absolute top-0 left-0 w-full h-full rounded-full"
@@ -130,11 +132,11 @@ const PomodoroTimer: React.FC = () => {
       </div>
 
       {/* 操作ボタン */}
-      <div className="flex justify-center space-x-4 mb-6">
+      <div className="flex flex-wrap justify-center gap-2 mb-4 md:mb-6">
         {timerStatus === "idle" && (
           <button
             onClick={startTimer}
-            className={`px-6 py-2 rounded-full text-white ${timerInfo.bgColor} hover:opacity-90`}
+            className={`px-4 md:px-6 py-2 rounded-full text-white ${timerInfo.bgColor} hover:opacity-90`}
           >
             開始
           </button>
@@ -143,7 +145,7 @@ const PomodoroTimer: React.FC = () => {
         {timerStatus === "running" && (
           <button
             onClick={pauseTimer}
-            className="px-6 py-2 rounded-full text-white bg-sub2 text-primary font-bold hover:opacity-90"
+            className="px-4 md:px-6 py-2 rounded-full text-white bg-sub2 text-primary font-bold hover:opacity-90"
           >
             一時停止
           </button>
@@ -152,7 +154,7 @@ const PomodoroTimer: React.FC = () => {
         {timerStatus === "paused" && (
           <button
             onClick={resumeTimer}
-            className={`px-6 py-2 rounded-full text-white ${timerInfo.bgColor} hover:opacity-90`}
+            className={`px-4 md:px-6 py-2 rounded-full text-white ${timerInfo.bgColor} hover:opacity-90`}
           >
             再開
           </button>
@@ -161,7 +163,7 @@ const PomodoroTimer: React.FC = () => {
         {timerStatus !== "idle" && (
           <button
             onClick={resetTimer}
-            className="px-6 py-2 rounded-full text-white bg-red-500 hover:opacity-90"
+            className="px-4 md:px-6 py-2 rounded-full text-white bg-red-500 hover:opacity-90"
           >
             リセット
           </button>
@@ -169,14 +171,14 @@ const PomodoroTimer: React.FC = () => {
 
         <button
           onClick={skipTimer}
-          className="px-6 py-2 rounded-full text-primary bg-gray-200 hover:bg-gray-300"
+          className="px-4 md:px-6 py-2 rounded-full text-primary bg-gray-200 hover:bg-gray-300"
         >
           スキップ
         </button>
       </div>
 
       {/* 情報表示 */}
-      <div className="text-center text-gray-600">
+      <div className="text-center text-gray-600 text-sm md:text-base">
         <p>本日の完了ポモドーロ: {completedPomodoros}</p>
         {estimatedEndTime && (
           <p className="mt-1">終了予定時刻: {estimatedEndTime}</p>

@@ -123,6 +123,7 @@ export interface PomodoroTask {
   createdAt: string;
   updatedAt: string;
   dueDate?: string;
+  status: "todo" | "inProgress" | "done"; // カンバンボード用のステータス
 }
 
 // ポモドーロセッションの型定義
