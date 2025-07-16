@@ -1,6 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import pomomateIcon from "/pomomate_icon.png"; // アイコンのインポート
 
 // サイドバーのナビゲーションアイテム
 const navigationItems = [
@@ -33,9 +34,9 @@ const Layout = ({ children }: LayoutProps) => {
             <div className="flex">
               <div className="flex-shrink-0 flex items-center">
                 <img
-                  src="/pomomate_icon.png"
-                  alt="ポモメイト"
-                  className="h-8 w-8 mr-2"
+                  className="mx-auto h-10 w-auto"
+                  src={pomomateIcon}
+                  alt="Pomomate"
                 />
                 <span className="text-xl font-bold text-white">ポモメイト</span>
               </div>
