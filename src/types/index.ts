@@ -96,7 +96,7 @@ export type TimerStatus = "idle" | "running" | "paused" | "finished";
 export type TimerType = "work" | "shortBreak" | "longBreak";
 
 // タスクの型定義
-export interface Task {
+export interface PomodoroTaskItem {
   id: string;
   title: string;
   description?: string;
@@ -137,7 +137,7 @@ export interface PomodoroSession {
 }
 
 // バッジの型定義
-export interface Badge {
+export interface PomodoroBadge {
   id: string;
   name: string;
   description: string;
